@@ -46,6 +46,7 @@ public class javaSearch {
 			@Override
 			public void actionPerformed(ActionEvent e) {
                 frame.dispose();
+                new Search();
 			}
 		});
 
@@ -53,6 +54,7 @@ public class javaSearch {
 			@Override
 			public void actionPerformed(ActionEvent e) {
                 frame.dispose();
+                new Search();
 			}
 		});
 
@@ -60,6 +62,7 @@ public class javaSearch {
 			@Override
 			public void actionPerformed(ActionEvent e) {
                 frame.dispose();
+                new Search();
 			}
 		});
 
@@ -67,6 +70,7 @@ public class javaSearch {
 			@Override
 			public void actionPerformed(ActionEvent e) {
                 frame.dispose();
+                new Search();
 			}
 		});
 
@@ -74,6 +78,7 @@ public class javaSearch {
 			@Override
 			public void actionPerformed(ActionEvent e) {
                 frame.dispose();
+                new Search();
 			}
 		});
 
