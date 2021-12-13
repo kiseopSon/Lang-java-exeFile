@@ -12,7 +12,7 @@ public class javaSearch {
 
 	public javaSearch() {
 		Frame frame = new Frame("자바 정규식");
-		frame.setBounds(700, 200, 420, 420);
+		frame.setBounds(700, 200, 430, 430);
 		frame.setLayout(null);
 		frame.setBackground(Color.LIGHT_GRAY);
 
