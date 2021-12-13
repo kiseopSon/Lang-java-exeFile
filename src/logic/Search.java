@@ -2,6 +2,7 @@ package logic;
 
 import java.awt.Button;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Frame;
 import java.awt.Label;
 import java.awt.TextField;
@@ -13,21 +14,29 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 public class Search{
+	
+	private String name= "";
+	
+	public Search(String name , String type) {
+		this.name = name;
 
-	public Search() {
 		Frame frame = new Frame("검색");
-		frame.setBounds(700, 200, 430, 430);
+		frame.setBounds(700, 200, 430, 360);
 		frame.setLayout(null);
 		frame.setBackground(Color.LIGHT_GRAY);
+		Font font = new Font("맑은 고딕", Font.PLAIN, 20);
 
-		Label lb0 = new Label("only Number");
-		lb0.setBounds(170, 140, 140, 20);
+		Label lb0 = new Label(this.name);
+		lb0.setBounds(102, 140, 300, 30);
+		lb0.setFont(font);
 
 		TextField ta0 = new TextField();
-		ta0.setBounds(110, 260, 125, 20);
+		ta0.setBounds(110, 250, 145, 30);
+		ta0.setFont(font);
 		
 		Button btn0 = new Button("Search");
-		btn0.setBounds(240,260,70,20);
+		btn0.setBounds(260,250,90,30);
+		btn0.setFont(font);
 
 		frame.add(lb0);
 		frame.add(ta0);
@@ -42,7 +51,27 @@ public class Search{
 			@Override
 			public void actionPerformed(ActionEvent e) {
                 frame.dispose();
-                new SearchList();
+                switch(name) {
+                case "Date (YYYY.mm.dd)":
+                	new SearchList("no data", type);
+                	break;
+                	
+                case "only Number":
+                	new SearchList("no data", type);
+                	break;
+                	
+                case "only Korean":
+                	new SearchList("no data", type);
+                	break;
+                	
+                case "only English (LowerCase)":
+                	new SearchList("no data", type);
+                	break;
+                	
+                case "Email (naver, google)":
+                	new SearchList("no data", type);
+                	break;
+                }
 			}
 		});
 		
@@ -57,8 +86,18 @@ public class Search{
 			@Override
 			public void keyPressed(KeyEvent e) {
 				// 엔터키 입력시, 작동
-				frame.dispose();
-				new SearchList();
+				if(e.getKeyCode() == e.VK_ENTER) {
+					frame.dispose();
+					switch (name) {
+					case "Date (YYYY.mm.dd)":
+						new SearchList("Date (YYYY.mm.dd)", type);
+						break;
+						
+					case "Email (naver, google)":
+						new SearchList("Email (naver, google)", type);
+						break;
+					}
+				}
 			}
 		});
 

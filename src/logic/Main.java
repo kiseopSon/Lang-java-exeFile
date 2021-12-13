@@ -9,13 +9,16 @@ class Main{
         frame.setBounds(700,200,400,300);
         frame.setLayout(null);
         frame.setBackground(Color.LIGHT_GRAY);
+        Font font = new Font("맑은 고딕", Font.PLAIN, 14);
 
-        Button btn0 = new Button("1. Java");
-        btn0.setBounds(85, 135, 75, 50);
+        Button btn0 = new Button("1. 자바");
+        btn0.setBounds(80, 135, 75, 50);
+        btn0.setFont(font);
         frame.add(btn0);
         
-        Button btn1 = new Button("2. JavaScript");
-        btn1.setBounds(225, 135, 100, 50);
+        Button btn1 = new Button("2. 자바스크립트");
+        btn1.setBounds(200, 135, 120, 50);
+        btn1.setFont(font);
         frame.add(btn1);
         
         frame.setResizable(false);
@@ -48,7 +51,6 @@ class Main{
 		});
     }
     public static void main(String[] args) {
-         System.out.println("main 시작");
          new Main();
     }
 }
