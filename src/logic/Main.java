@@ -6,7 +6,7 @@ import java.awt.event.*;
 class Main{
     public Main(){
         Frame frame = new Frame("정규 표현식 찾기");
-        frame.setBounds(700,200,420,300);
+        frame.setBounds(700,200,400,300);
         frame.setLayout(null);
         frame.setBackground(Color.LIGHT_GRAY);
 
