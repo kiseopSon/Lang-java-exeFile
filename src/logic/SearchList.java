@@ -13,15 +13,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SearchList{
-	
+	/*
+	 *	현재 exe, exe2의 사이즈체크를 정확하게 하지않아, label작성시 indexoutofexception발생 위험이 있음.
+	 */
 	private String name = "";
-	private String[] exe = {};
+	private String[] exe = {};//날짜
+	private String[] exe2 = {};//이메일
 	private char mark;
 	
 	public SearchList(String name , String type) {
 		this.name = name;
 		
-		if(name.length() > 60) {
+		if(name.length() == 79) {//이메일만 특별대우
+			this.exe2 = name.split("@");
+			
+			
+		} else if(name.length() > 60) {//79가 발생하면 큰일나지만, 어차피 Search에서 내가 임의로 주는값이기에 문제없음.
 			mark = name.charAt(26);
 			List<Integer> colBox = new ArrayList<Integer>();
 			
@@ -58,12 +65,25 @@ public class SearchList{
 		Font font = new Font("맑은 고딕", Font.PLAIN, 28);
 		Font font2 = new Font("굴림체", Font.PLAIN, 21);
 		Font font3 = new Font("맑은 고딕", Font.PLAIN, 20);
+		Font font4 = new Font("맑은 고딕", Font.PLAIN, 20);
+		
 		
 		Label lb0 = new Label("Result : ");
 		lb0.setBounds(170, 110, 150, 45);
 		lb0.setFont(font2);
 		
-		if(exe.length == 0) {
+		if(!(exe2.length == 0)) {
+			Label lb1 = new Label(exe2[0]+"@");
+			lb1.setBounds(70, 165, 300, 25);
+			lb1.setFont(font4);
+			frame.add(lb1);
+			
+			Label lb2 = new Label(exe2[1]);
+			lb2.setBounds(13, 210, 400, 25);
+			lb2.setFont(font4);
+			frame.add(lb2);
+			
+		} else if(exe.length == 0) {
 			Label lb1 = new Label(this.name);
 			lb1.setBounds(135, 185, 200, 30);
 			lb1.setFont(font);
