@@ -137,25 +137,19 @@ public class Search{
 		                	try {
 		                		final String text = ta0.getText();
 
-		                		if(!text.equals("")) {
-										if(!(text.indexOf(".") == -1)) {
-											new SearchList("^([0][1-9]|[12][0-9])\\d{2}.(0[1-9]|1[012]).(0[1-9]|[12][0-9]|3[01])$", type); 
-											return;
-										} else if(!(text.indexOf("-") == -1)) {
-											new SearchList("^([0][1-9]|[12][0-9])\\d{2}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$", type); 
-											return;
-										} else if(!(text.indexOf(":") == -1)) {
-											new SearchList("^([0][1-9]|[12][0-9])\\d{2}:(0[1-9]|1[012]):(0[1-9]|[12][0-9]|3[01])$", type); 
-											return;
-										} else {//아무것도 없거나 그외인 경우
-											new SearchList("^([0][1-9]|[12][0-9])\\d{2}(0[1-9]|1[012])(0[1-9]|[12][0-9]|3[01])$", type); 
-											return;
-										}
-									
-		                		} else {
-		                			System.out.println("Data null");
-		                			
-		                		}
+								if(!(text.indexOf(".") == -1)) {
+									new SearchList("^([0][1-9]|[12][0-9])\\d{2}.(0[1-9]|1[012]).(0[1-9]|[12][0-9]|3[01])$", type); 
+									return;
+								} else if(!(text.indexOf("-") == -1)) {
+									new SearchList("^([0][1-9]|[12][0-9])\\d{2}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$", type); 
+									return;
+								} else if(!(text.indexOf(":") == -1)) {
+									new SearchList("^([0][1-9]|[12][0-9])\\d{2}:(0[1-9]|1[012]):(0[1-9]|[12][0-9]|3[01])$", type); 
+									return;
+								} else {//아무것도 없거나 그외인 경우
+									new SearchList("^([0][1-9]|[12][0-9])\\d{2}(0[1-9]|1[012])(0[1-9]|[12][0-9]|3[01])$", type); 
+									return;
+								}
 								
 							} catch (NumberFormatException e2) {
 								new SearchList("데이터 입력 오류", type);
