@@ -14,6 +14,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 public class Search{
 	
@@ -153,9 +154,7 @@ public class Search{
 									
 		                		} else {
 		                			System.out.println("Data null");
-		                			Dialog log = new Dialog(frame, "빈값으로 검색할 수 없습니다.", true);
-		                			log.setSize(140,90);
-		                			log.show();
+		                			
 		                		}
 								
 							} catch (NumberFormatException e2) {
