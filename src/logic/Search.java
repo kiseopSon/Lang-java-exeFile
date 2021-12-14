@@ -2,9 +2,11 @@ package logic;
 
 import java.awt.Button;
 import java.awt.Color;
+import java.awt.Dialog;
 import java.awt.Font;
 import java.awt.Frame;
 import java.awt.Label;
+import java.awt.TextComponent;
 import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -51,21 +53,61 @@ public class Search{
 			@Override
 			public void actionPerformed(ActionEvent e) {
                 frame.dispose();
+                
                 switch(name) {
                 case "Date (YYYY.mm.dd)":
-                	new SearchList("no data", type);
+                	try {
+                		final String text = ta0.getText();
+
+                		if(!text.equals("")) {
+								if(!(text.indexOf(".") == -1)) {
+									new SearchList("^([0][1-9]|[12][0-9])\\d{2}.(0[1-9]|1[012]).(0[1-9]|[12][0-9]|3[01])$", type); 
+									return;
+								} else if(!(text.indexOf("-") == -1)) {
+									new SearchList("^([0][1-9]|[12][0-9])\\d{2}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$", type); 
+									return;
+								} else if(!(text.indexOf(":") == -1)) {
+									new SearchList("^([0][1-9]|[12][0-9])\\d{2}:(0[1-9]|1[012]):(0[1-9]|[12][0-9]|3[01])$", type); 
+									return;
+								} else {//아무것도 없거나 그외인 경우
+									new SearchList("^([0][1-9]|[12][0-9])\\d{2}(0[1-9]|1[012])(0[1-9]|[12][0-9]|3[01])$", type); 
+									return;
+								}
+							
+                		} else {
+                			System.out.println("Data null");
+                		}
+						
+					} catch (NumberFormatException e2) {
+						new SearchList("데이터 입력 오류", type);
+					}
                 	break;
                 	
                 case "only Number":
-                	new SearchList("no data", type);
+                	try {
+                		new SearchList("^[0-9]{"+ta0.getText().length()+"}$", type);
+						
+					} catch (NumberFormatException e2) {
+						new SearchList("데이터 입력 오류", type);
+					}
                 	break;
                 	
                 case "only Korean":
-                	new SearchList("no data", type);
+                	try {
+                		new SearchList("^[가-힣]{"+ta0.getText().length()+"}$", type);
+						
+					} catch (NumberFormatException e2) {
+						new SearchList("데이터 입력 오류", type);
+					}
                 	break;
                 	
                 case "only English (LowerCase)":
-                	new SearchList("no data", type);
+                	try {
+                		new SearchList("^[a-z]{"+ta0.getText().length()+"}$", type);
+						
+					} catch (NumberFormatException e2) {
+						new SearchList("데이터 입력 오류", type);
+					}
                 	break;
                 	
                 case "Email (naver, google)":
@@ -88,15 +130,70 @@ public class Search{
 				// 엔터키 입력시, 작동
 				if(e.getKeyCode() == e.VK_ENTER) {
 					frame.dispose();
-					switch (name) {
-					case "Date (YYYY.mm.dd)":
-						new SearchList("Date (YYYY.mm.dd)", type);
-						break;
-						
-					case "Email (naver, google)":
-						new SearchList("Email (naver, google)", type);
-						break;
-					}
+					
+					 switch(name) {
+					 case "Date (YYYY.mm.dd)":
+		                	try {
+		                		final String text = ta0.getText();
+
+		                		if(!text.equals("")) {
+										if(!(text.indexOf(".") == -1)) {
+											new SearchList("^([0][1-9]|[12][0-9])\\d{2}.(0[1-9]|1[012]).(0[1-9]|[12][0-9]|3[01])$", type); 
+											return;
+										} else if(!(text.indexOf("-") == -1)) {
+											new SearchList("^([0][1-9]|[12][0-9])\\d{2}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$", type); 
+											return;
+										} else if(!(text.indexOf(":") == -1)) {
+											new SearchList("^([0][1-9]|[12][0-9])\\d{2}:(0[1-9]|1[012]):(0[1-9]|[12][0-9]|3[01])$", type); 
+											return;
+										} else {//아무것도 없거나 그외인 경우
+											new SearchList("^([0][1-9]|[12][0-9])\\d{2}(0[1-9]|1[012])(0[1-9]|[12][0-9]|3[01])$", type); 
+											return;
+										}
+									
+		                		} else {
+		                			System.out.println("Data null");
+		                			Dialog log = new Dialog(frame, "빈값으로 검색할 수 없습니다.", true);
+		                			log.setSize(140,90);
+		                			log.show();
+		                		}
+								
+							} catch (NumberFormatException e2) {
+								new SearchList("데이터 입력 오류", type);
+							}
+		                	break;
+		                	
+		                case "only Number":
+		                	try {
+		                		new SearchList("^[0-9]{"+ta0.getText().length()+"}$", type);
+								
+							} catch (NumberFormatException e2) {
+								new SearchList("데이터 입력 오류", type);
+							}
+		                	break;
+		                	
+		                case "only Korean":
+		                	try {
+		                		new SearchList("^[가-힣]{"+ta0.getText().length()+"}$", type);
+								
+							} catch (NumberFormatException e2) {
+								new SearchList("데이터 입력 오류", type);
+							}
+		                	break;
+		                	
+		                case "only English (LowerCase)":
+		                	try {
+		                		new SearchList("^[a-z]{"+ta0.getText().length()+"}$", type);
+								
+							} catch (NumberFormatException e2) {
+								new SearchList("데이터 입력 오류", type);
+							}
+		                	break;
+		                	
+		                case "Email (naver, google)":
+		                	new SearchList("no data", type);
+		                	break;
+		                }
 				}
 			}
 		});
