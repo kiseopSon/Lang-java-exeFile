@@ -2,11 +2,9 @@ package logic;
 
 import java.awt.Button;
 import java.awt.Color;
-import java.awt.Dialog;
 import java.awt.Font;
 import java.awt.Frame;
 import java.awt.Label;
-import java.awt.TextComponent;
 import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,7 +12,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 
 public class Search{
 	
@@ -111,7 +108,7 @@ public class Search{
                 		new SearchList("^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$", type);
                 		
 					} catch (NumberFormatException e2) {
-						// TODO: handle exception
+						new SearchList("데이터 입력 오류", type);
 					}
                 	break;
                 }
@@ -129,7 +126,7 @@ public class Search{
 			@Override
 			public void keyPressed(KeyEvent e) {
 				// 엔터키 입력시, 작동
-				if(e.getKeyCode() == e.VK_ENTER) {
+				if(e.getKeyCode() == KeyEvent.VK_ENTER) {
 					frame.dispose();
 					
 					 switch(name) {
@@ -188,7 +185,7 @@ public class Search{
 		                		new SearchList("^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$", type);
 		                		
 							} catch (NumberFormatException e2) {
-								// TODO: handle exception
+								new SearchList("데이터 입력 오류", type);
 							}
 		                	break;
 		                }
