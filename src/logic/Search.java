@@ -27,7 +27,7 @@ public class Search{
 		Font font = new Font("맑은 고딕", Font.PLAIN, 20);
 
 		Label lb0 = new Label(this.name);
-		lb0.setBounds(102, 140, 300, 30);
+		lb0.setBounds(180, 140, 300, 30);
 		lb0.setFont(font);
 
 		TextField ta0 = new TextField();
@@ -53,7 +53,7 @@ public class Search{
                 frame.dispose();
                 
                 switch(name) {
-                case "Date (YYYY.mm.dd)":
+                case "날짜":
                 	try {
                 		final String text = ta0.getText();
 
@@ -76,7 +76,7 @@ public class Search{
 					}
                 	break;
                 	
-                case "only Number":
+                case "숫자":
                 	try {
                 		new SearchList("[0-9]{"+ta0.getText().length()+"}", type);
 						
@@ -85,7 +85,7 @@ public class Search{
 					}
                 	break;
                 	
-                case "only Korean":
+                case "한국어":
                 	try {
                 		new SearchList("[ㄱ-ㅎ가-힣]{"+ta0.getText().length()+"}", type);
 						
@@ -94,7 +94,7 @@ public class Search{
 					}
                 	break;
                 	
-                case "only English (LowerCase)":
+                case "영어":
                 	try {
                 		new SearchList("[a-zA-Z]{"+ta0.getText().length()+"}", type);
 						
@@ -103,7 +103,7 @@ public class Search{
 					}
                 	break;
                 	
-                case "Email (naver, google)":
+                case "이메일":
                 	try {
                 		new SearchList("[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}", type);
                 		
@@ -130,7 +130,7 @@ public class Search{
 					frame.dispose();
 					
 					 switch(name) {
-					 case "Date (YYYY.mm.dd)":
+					 case "날짜":
 		                	try {
 		                		final String text = ta0.getText();
 
@@ -153,7 +153,7 @@ public class Search{
 							}
 		                	break;
 		                	
-		                case "only Number":
+		                case "숫자":
 		                	try {
 		                		new SearchList("[0-9]{"+ta0.getText().length()+"}", type);
 								
@@ -162,7 +162,7 @@ public class Search{
 							}
 		                	break;
 		                	
-		                case "only Korean":
+		                case "한국어":
 		                	try {
 		                		new SearchList("[ㄱ-ㅎ가-힣]{"+ta0.getText().length()+"}", type);
 								
@@ -171,7 +171,7 @@ public class Search{
 							}
 		                	break;
 		                	
-		                case "only English":
+		                case "영어":
 		                	try {
 		                		new SearchList("[a-zA-Z]{"+ta0.getText().length()+"}", type);
 								
@@ -180,7 +180,7 @@ public class Search{
 							}
 		                	break;
 		                	
-		                case "Email (naver, google)":
+		                case "이메일":
 		                	try {
 		                		new SearchList("[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}", type);
 		                		

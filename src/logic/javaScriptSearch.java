@@ -20,23 +20,23 @@ public class javaScriptSearch {
 		frame.setBackground(Color.LIGHT_GRAY);
 		Font font = new Font("맑은 고딕", Font.PLAIN, 12);
 
-		Button btn0 = new Button("Date (YYYY.mm.dd)");
+		Button btn0 = new Button("날짜");
 		btn0.setBounds(140, 80, 155, 40);
 		btn0.setFont(font);
 
-		Button btn1 = new Button("only Number");
+		Button btn1 = new Button("숫자");
 		btn1.setBounds(140, 140, 155, 40);
 		btn1.setFont(font);
 
-		Button btn2 = new Button("only Korean");
+		Button btn2 = new Button("한국어");
 		btn2.setBounds(140, 200, 155, 40);
 		btn2.setFont(font);
 
-		Button btn3 = new Button("only English (LowerCase)");
+		Button btn3 = new Button("영어");
 		btn3.setBounds(140, 260, 155, 40);
 		btn3.setFont(font);
 
-		Button btn4 = new Button("Email (naver, google)");
+		Button btn4 = new Button("이메일");
 		btn4.setBounds(140, 320, 155, 40);
 		btn4.setFont(font);
 

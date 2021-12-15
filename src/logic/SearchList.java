@@ -92,9 +92,9 @@ public class SearchList{
 			lb2.setFont(font4);
 			frame.add(lb2);
 			
-		} else if(exe.length == 0) {
+		} else if(exe.length == 0) {//기본결과라벨
 			Label lb1 = new Label(this.name);
-			lb1.setBounds(135, 185, 200, 30);
+			lb1.setBounds(120, 185, 250, 30);
 			lb1.setFont(font);
 			frame.add(lb1);
 			
