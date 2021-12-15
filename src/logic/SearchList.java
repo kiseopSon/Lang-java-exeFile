@@ -16,13 +16,22 @@ public class SearchList{
 	/*
 	 *	현재 exe, exe2의 사이즈체크를 정확하게 하지않아, label작성시 indexoutofexception발생 위험이 있음.
 	 */
-	private String name = "";
+	private String name = "";//기본 이름 , 다이렉트로 적재하는건, exe, exe2를 사용해야할 경우만 해당
 	private String[] exe = {};//날짜
 	private String[] exe2 = {};//이메일
 	private char mark;
 	
 	public SearchList(String name , String type) {
 		this.name = name;
+		
+		if(type.equals("java")) {
+			this.name = "^"+name+"$";
+			name = "^"+name+"$";
+		}
+		else if(type.equals("javascript")) {
+			this.name = "/"+name+"/";
+			name = "/"+name+"/";
+		} 
 		
 		if(name.length() == 79) {//이메일만 특별대우
 			this.exe2 = name.split("@");

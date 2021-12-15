@@ -58,16 +58,16 @@ public class Search{
                 		final String text = ta0.getText();
 
 						if(!(text.indexOf(".") == -1)) {
-							new SearchList("^([0][1-9]|[12][0-9])\\d{2}.(0[1-9]|1[012]).(0[1-9]|[12][0-9]|3[01])$", type); 
+							new SearchList("([0][1-9]|[12][0-9])\\d{2}.(0[1-9]|1[012]).(0[1-9]|[12][0-9]|3[01])", type); 
 							return;
 						} else if(!(text.indexOf("-") == -1)) {
-							new SearchList("^([0][1-9]|[12][0-9])\\d{2}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$", type); 
+							new SearchList("([0][1-9]|[12][0-9])\\d{2}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])", type); 
 							return;
 						} else if(!(text.indexOf(":") == -1)) {
-							new SearchList("^([0][1-9]|[12][0-9])\\d{2}:(0[1-9]|1[012]):(0[1-9]|[12][0-9]|3[01])$", type); 
+							new SearchList("([0][1-9]|[12][0-9])\\d{2}:(0[1-9]|1[012]):(0[1-9]|[12][0-9]|3[01])", type); 
 							return;
 						} else {//아무것도 없거나 그외인 경우
-							new SearchList("^([0][1-9]|[12][0-9])\\d{2}(0[1-9]|1[012])(0[1-9]|[12][0-9]|3[01])$", type); 
+							new SearchList("([0][1-9]|[12][0-9])\\d{2}(0[1-9]|1[012])(0[1-9]|[12][0-9]|3[01])", type); 
 							return;
 						}
 						
@@ -78,7 +78,7 @@ public class Search{
                 	
                 case "only Number":
                 	try {
-                		new SearchList("^[0-9]{"+ta0.getText().length()+"}$", type);
+                		new SearchList("[0-9]{"+ta0.getText().length()+"}", type);
 						
 					} catch (NumberFormatException e2) {
 						new SearchList("데이터 입력 오류", type);
@@ -87,7 +87,7 @@ public class Search{
                 	
                 case "only Korean":
                 	try {
-                		new SearchList("^[가-힣]{"+ta0.getText().length()+"}$", type);
+                		new SearchList("[ㄱ-ㅎ가-힣]{"+ta0.getText().length()+"}", type);
 						
 					} catch (NumberFormatException e2) {
 						new SearchList("데이터 입력 오류", type);
@@ -96,7 +96,7 @@ public class Search{
                 	
                 case "only English (LowerCase)":
                 	try {
-                		new SearchList("^[a-z]{"+ta0.getText().length()+"}$", type);
+                		new SearchList("[a-zA-Z]{"+ta0.getText().length()+"}", type);
 						
 					} catch (NumberFormatException e2) {
 						new SearchList("데이터 입력 오류", type);
@@ -105,7 +105,7 @@ public class Search{
                 	
                 case "Email (naver, google)":
                 	try {
-                		new SearchList("^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$", type);
+                		new SearchList("[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}", type);
                 		
 					} catch (NumberFormatException e2) {
 						new SearchList("데이터 입력 오류", type);
@@ -135,16 +135,16 @@ public class Search{
 		                		final String text = ta0.getText();
 
 								if(!(text.indexOf(".") == -1)) {
-									new SearchList("^([0][1-9]|[12][0-9])\\d{2}.(0[1-9]|1[012]).(0[1-9]|[12][0-9]|3[01])$", type); 
+									new SearchList("([0][1-9]|[12][0-9])\\d{2}.(0[1-9]|1[012]).(0[1-9]|[12][0-9]|3[01])", type); 
 									return;
 								} else if(!(text.indexOf("-") == -1)) {
-									new SearchList("^([0][1-9]|[12][0-9])\\d{2}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$", type); 
+									new SearchList("([0][1-9]|[12][0-9])\\d{2}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])", type); 
 									return;
 								} else if(!(text.indexOf(":") == -1)) {
-									new SearchList("^([0][1-9]|[12][0-9])\\d{2}:(0[1-9]|1[012]):(0[1-9]|[12][0-9]|3[01])$", type); 
+									new SearchList("([0][1-9]|[12][0-9])\\d{2}:(0[1-9]|1[012]):(0[1-9]|[12][0-9]|3[01])", type); 
 									return;
 								} else {//아무것도 없거나 그외인 경우
-									new SearchList("^([0][1-9]|[12][0-9])\\d{2}(0[1-9]|1[012])(0[1-9]|[12][0-9]|3[01])$", type); 
+									new SearchList("([0][1-9]|[12][0-9])\\d{2}(0[1-9]|1[012])(0[1-9]|[12][0-9]|3[01])", type); 
 									return;
 								}
 								
@@ -155,7 +155,7 @@ public class Search{
 		                	
 		                case "only Number":
 		                	try {
-		                		new SearchList("^[0-9]{"+ta0.getText().length()+"}$", type);
+		                		new SearchList("[0-9]{"+ta0.getText().length()+"}", type);
 								
 							} catch (NumberFormatException e2) {
 								new SearchList("데이터 입력 오류", type);
@@ -164,16 +164,16 @@ public class Search{
 		                	
 		                case "only Korean":
 		                	try {
-		                		new SearchList("^[가-힣]{"+ta0.getText().length()+"}$", type);
+		                		new SearchList("[ㄱ-ㅎ가-힣]{"+ta0.getText().length()+"}", type);
 								
 							} catch (NumberFormatException e2) {
 								new SearchList("데이터 입력 오류", type);
 							}
 		                	break;
 		                	
-		                case "only English (LowerCase)":
+		                case "only English":
 		                	try {
-		                		new SearchList("^[a-z]{"+ta0.getText().length()+"}$", type);
+		                		new SearchList("[a-zA-Z]{"+ta0.getText().length()+"}", type);
 								
 							} catch (NumberFormatException e2) {
 								new SearchList("데이터 입력 오류", type);
@@ -182,7 +182,7 @@ public class Search{
 		                	
 		                case "Email (naver, google)":
 		                	try {
-		                		new SearchList("^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$", type);
+		                		new SearchList("[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}", type);
 		                		
 							} catch (NumberFormatException e2) {
 								new SearchList("데이터 입력 오류", type);
