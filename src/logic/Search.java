@@ -78,8 +78,22 @@ public class Search{
                 	
                 case "숫자":
                 	try {
-                		new SearchList("[0-9]{"+ta0.getText().length()+"}", type);
-						
+                		if(!ta0.getText().contains(".")) new SearchList("[0-9]{"+ta0.getText().length()+"}", type);
+                		else {
+                			String text = ta0.getText();
+                			int check = text.indexOf(".");
+                			String first = "";
+                			String end = "";
+                			
+                			if(!(check == 0)) {//앞자리가 있는 ~.~
+                				first = text.substring(0,check);
+                				end = text.substring(check+1, text.length());
+                				new SearchList("[0-9]{"+ first.length() +"}"+"\\.[0-9]{"+ end.length() +"}", type);
+                			} else {//앞자리가 없는 .~~~
+                				end = text.substring(check+1, text.length());
+                				new SearchList(".[0-9]{"+ end.length() +"}", type);
+                			}
+                		}//else
 					} catch (NumberFormatException e2) {
 						new SearchList("데이터 입력 오류", type);
 					}
@@ -155,8 +169,22 @@ public class Search{
 		                	
 		                case "숫자":
 		                	try {
-		                		new SearchList("[0-9]{"+ta0.getText().length()+"}", type);
-								
+		                		if(!ta0.getText().contains(".")) new SearchList("[0-9]{"+ta0.getText().length()+"}", type);
+		                		else {
+		                			String text = ta0.getText();
+		                			int check = text.indexOf(".");
+		                			String first = "";
+		                			String end = "";
+		                			
+		                			if(!(check == 0)) {//앞자리가 있는 ~.~
+		                				first = text.substring(0,check);
+		                				end = text.substring(check+1, text.length());
+		                				new SearchList("[0-9]{"+ first.length() +"}"+"\\.[0-9]{"+ end.length() +"}", type);
+		                			} else {//앞자리가 없는 .~~~
+		                				end = text.substring(check+1, text.length());
+		                				new SearchList(".[0-9]{"+ end.length() +"}", type);
+		                			}
+		                		}//else
 							} catch (NumberFormatException e2) {
 								new SearchList("데이터 입력 오류", type);
 							}
