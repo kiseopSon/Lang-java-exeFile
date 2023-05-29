@@ -1,0 +1,4 @@
+1. cmd창 
+2. openSSL 설치 확인 - 오픈소스임, 현재 설치되어 있지 않음 = jdk의 
+3. 암호는 asdfasdf이며 입력창을 띄우지 않고 커맨드에서 바로 설정 = openssl genrsa -aes256 -passout pass:asdfasdf -out aes-pri.pem 2048 입력
+4. 위에서 생성한 개인키 복호화해서 rsa Private Key 추출 = openssl rsa -outform der -in aes-pri.pem -passin pass:asdfasdf -out aes-pri.key
