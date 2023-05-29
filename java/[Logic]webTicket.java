@@ -14,7 +14,7 @@ public class webTicket
 		String port = "";
 		try 
 		{
-			String certFolder = "D:/shinhanQlik/cert/"; //인증서 절대경로
+			String certFolder = "D:/order/cert/"; //인증서 절대경로
 			String proxyCert = certFolder + "client.jks"; //클라이언트인증서 상대경로
 			String proxyCertPass="123456"; //인증서 비밀번호
 			String rootCert = certFolder + "root.jks"; //루트인증서 상대경로
