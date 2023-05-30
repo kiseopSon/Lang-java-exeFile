@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>계산기</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    
+    <Style>
+        *{
+            border: 0;
+        }
+        div{
+            size: 30px;
+            
+        }
+        ul{
+            width: 10%;
+            display: inline-block;
+        }
+        li{
+            padding: 0;
+            display: inline;
+            font-size: 20px;
+            color: gray;
+            list-style: none;
+            width: 50px;
+            
+        }
+    </Style>
+    <script>
+        var num = null;//널말고는 방법이없음. 한칸뗘도 자동trim함
+ 
+        
+        function option(num) {
+            this.num += num;
+            document.getElementById('result').value += num;
+        }
+        function result(dex){
+            if(dex =='='){
+                var result = eval(this.num);
+              document.getElementById('result').value = result;
+               this.num = result;
+
+            }
+            else {
+             document.getElementById('result').value += dex;
+             this.num += dex;
+            }
+        }
+        
+        function clears() {
+             document.getElementById('result').value = "";
+        }
+    </script>
+</head>
+<body>
+    <button onclick="clears();"><li>reset</li></button>
+    <input type="text" id='result'>
+    <div>
+    <ul>
+        <button onclick="option(1);"><li>1</li></button>
+        <button onclick="option(2);"><li>2</li></button>
+        <button onclick="option(3);"><li>3</li></button><br>
+        <button onclick="option(4);"><li>4</li></button>
+        <button onclick="option(5);"><li>5</li></button>
+        <button onclick="option(6);"><li>6</li></button><br>
+        <button onclick="option(7);"><li>7</li></button>
+        <button onclick="option(8);"><li>8</li></button>
+        <button onclick="option(9);"><li>9</li></button><br>
+        <button onclick="option(0);"><li>0</li></button>
+    </ul>
+    <ul>
+        <button onclick="result('+')"><li>+</li></button><br>
+        <button onclick="result('-')"><li>-</li></button><br>
+        <button onclick="result('/')"><li>/</li></button><br>
+        <button onclick="result('*')"><li>*</li></button><br>
+        <button onclick="result('=')"><li>=</li></button><br>
+
+    </ul>
+    </div>
+</body>
+</html>
