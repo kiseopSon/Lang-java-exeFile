@@ -8,3 +8,10 @@
 5. 어디까지나 내가 쓰려고 만든것이다.
 6. 간혹 취미용으로 만드는 응용프로그램도 올라 올 수 있다.
 7. 여기에있는 모든 java소스는 public class명이 올바르지 않고, 파일명도 []괄호를 인식하지 못하기 때문에 사용할땐 모두 제거하고 이름을 맞춰서 사용해야 작동된다.
+
+
+-1. 기술 스택방향
+![기술스택1](https://github.com/kiseopSon/Lang-java-exeFile/assets/30857479/6037e9eb-14bd-4da1-8aee-f9308e7507aa)
+![기술스택2](https://github.com/kiseopSon/Lang-java-exeFile/assets/30857479/4dc76737-20a3-4f56-a0da-7a7cd44f7978)
+![기술스택3](https://github.com/kiseopSon/Lang-java-exeFile/assets/30857479/58fd585c-13df-485c-bbe0-413fd819e7b3)
+![기술스택4](https://github.com/kiseopSon/Lang-java-exeFile/assets/30857479/3c9037f1-f26f-4ca1-8144-b5e480042227)
