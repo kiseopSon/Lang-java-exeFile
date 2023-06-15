@@ -1,0 +1,23 @@
+--시퀀스
+create sequence seq_pro_idx;
+
+--상품테이블
+create table product(
+	idx Number(3) primary key, --일련번호
+	category varchar2(100) not null, --카테고리
+	p_num varchar2(100) unique not null, --모델명
+	p_name varchar2(250) not null, --상품명
+	p_company varchar2(250) not null, -- 제조사
+	p_price number(10) not null, --상품 가격
+	p_saleprice number(10) not null, --할인가
+	p_image_s varchar2(300), --상품 이미지(소)
+	p_image_l varchar2(300), --상품 이미지(대)
+	p_content clob not null, --상품 설명(상세)한글이든 영어든 캐릭터 라지 오브젝트 1기가 넘은 텍스트도 가능 거의 다 가능 String타입.
+	p_date date not null --상품 등록일자 
+);
+
+--샘플데이터
+insert into product values(seq_pro_idx.nextVal, 'sp003','RC-123','로체스 인라인','로체스',32000,11500,'pds1.jpg','pds1_z.jpg','바이오맥스 통풍 나일론 특수 충격 흡수 밑창 안사면 후회',sysdate);
+insert into product values(seq_pro_idx.nextVal, 'ele002','vc12','삼성 PDP TV','삼성',2000000,1700000,'pds4.jpg','jpd4_z.jpg','집안을 가득 매우는 화면비, 우리집에 호랑이가 사는줄!!',sysdate);
+
+commit;

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>z-index</title>
+<style>
+* {
+	margin: 0;
+	padding: 0;
+}
+
+#wrap{
+	  margin: 0 auto;
+	  width: 500px;
+	  background: gray;
+	  border: 5px solid #f00;
+}
+
+#header{
+		width: 500px;
+		background: #09f;
+		margin-bottom: 10px;
+		text-align: center;
+		padding: 10px 0;
+		color: #fff;
+}
+
+#content{
+		width: 500px;
+		background: #ccc;
+		margin-bottom: 10px 0;
+		overflow: hidden;
+}
+
+#left{
+		float: left;
+		width: 180px;
+		background: #fcf;
+		padding: 10px;
+		height: 100px;
+		text-align: center;
+}
+
+#right{
+		float: right;
+		width: 180px;
+		background: #fcf;
+		padding: 10px;
+		height: 100px;
+		text-align: center;
+}
+
+#footer{
+		width: 500px;
+		background: #33f;
+		text-align: center;
+		padding: 10px 0;
+		color: #fff;
+}
+
+#container {
+	margin: 10px auto;
+	width: 500px;
+	padding: 10px;
+	background: #fdd;
+	border: 5px solid #caa;
+	overflow: hidden;
+}
+
+h1 {
+	text-align: center;
+}
+
+/*float은 '부유하고있다'의 의미로 부모에게 영향을 받지 않고,
+	  float속성을 가진 태그들만 공중에 붕 뜬 모양이 되고, 출가한것!처럼 보인다.
+	    그러므로 부모를 통해 float을 가진 자식들이 여전히 나의 영역에 있어야 함을
+	    명시해야 하는데 이것을 'float의 해제'라고 한다. overflow:hidden은 여기서 다르게 작용함.*/
+.c1 {
+	width: 200px;
+	padding: 15px;
+	background: #dda;
+	height: 100px;
+	float: left;
+}
+
+.c2 {
+	width: 200px;
+	padding: 15px;
+	background: #dda;
+	height: 100px;
+	float: right;
+}
+
+/*브라우저 기준. 절대값 0,0 위치로 자리를 잡음.*/
+.box1 {
+	background: yellow;
+	left: 100px;
+	top: 100px;
+	z-index: 3;
+	position: absolute;
+}
+
+.box2 {
+	background: orange;
+	left: 110px;
+	top: 110px;
+	z-index: 2;
+	position: absolute;
+}
+
+.box3 {
+	background: teal;
+	left: 120px;
+	top: 120px;
+	z-index: 1;
+	position: absolute;
+}
+</style>
+</head>
+<body>
+	<div id="wrap">
+		<div id="header">
+			<p>임창정</p>
+		</div><!-- header -->
+		<div id="content">
+			<div id="left">
+				<p>오랜만이야</p>
+			</div>
+			<div id="right">
+				<p>소주한잔</p>
+			</div>
+		</div><!-- content -->
+		<div id="footer">
+			<p>asdfel</p>
+		</div>
+	</div><!-- wrap -->
+	<p class="box1">박스1</p>
+	<p class="box2">박스2</p>
+	<p class="box3">박스3</p>
+	<div id="container">
+		<h1>임창정</h1>
+		<div class="c1">
+			<p>소주한잔</p>
+		</div>
+		<div class="c2">
+			<p>오랜만이야</p>
+		</div>
+	</div>
+</body>
+</html>

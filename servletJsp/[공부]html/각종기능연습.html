@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>연습</title>
+<style>
+/*스타일 중에 margin은 바깥여백, border은 어중간한 그들사이, padding은 안쪽여백. 수업때 땡땡이 침.*/
+	h1{color:red;}
+	h2{color: blue;}
+	p{color:magenta;
+	  border-width:5px 10px 15px 20px; border-color:blue; border-style:groove;
+	}
+	.text{color:yellow;}
+	h1.text{color:green;}
+	.box h3{color:orange;}
+	span{color:gray;}
+	.box .span_blue{color:blue;}
+	#a1 h1.hh{color:gray;}
+	/*
+	#ff0000을 줄여서 #f00으로 사용 가능
+	*/
+</style>
+</head>
+<body>
+<h1>스타일 연습 01</h1>
+<h1 class="text">스타일 연습 01-02</h1>
+<h2>스타일 연습 02</h2>
+<div class="box">
+<h3>클래스 연습01</h3>
+<p class="text">
+	가나다라마바사 아자차카타파하<br>
+	하히후헤호 라리라루레로 카키쿠케코 마미무메모 나니누네노 아이에우오 사시스세소 타치츠테토 야유요
+</p>
+<div class="box" id="a1">
+	<span class="span_blue">스팬</span>
+	<h1 class="hh">아이디 연습</h1>
+</div>
+</div>
+<p class="text2">
+	나는 두번쨰야 씨부레야
+</p>
+
+	<main>
+		<section>
+			<br> <br> <br>
+			<h1>
+				<strong>NAV Main</strong>
+			</h1>
+			<br>
+			<h1>커리 (Curry)재료</h1>
+			<ul>
+				<!-- padding 문제 -->
+				<li>카레가루 100g</li>
+				<li>닭가슴살 200g</li>
+				<li>감자 1개</li>
+				<li>양파 1/2개</li>
+				<li>당근 1/2개</li>
+			</ul>
+			<img src="image/ji.JPG" width="300px" height="300px">
+			<hr>
+			<div>컨테이너야 나는</div>
+			<dl>
+				<!-- 블록콧과 유사하지만 사전적으로 명확하게 정의되어 있는 것들을 위주로 쓰는 편 -->
+				<dt>곰</dt>
+				<dd>곰에 대한 정의 주루룩</dd>
+			</dl>
+			<ul>
+				<li><a href="#">개인뱅킹</a>
+					<ul>
+						<li><a href="#">조회</a></li>
+						<li><a href="#">이체</a></li>
+						<li><a href="#">신규/해지</a></li>
+						<li><a href="#">공과금/법원</a></li>
+						<li><a href="#">뱅킹보안센터</a></li>
+					</ul></li>
+			</ul>
+			<ul>
+				<li><a href="#">자산관리</a>
+					<ul>
+						<li><a href="#">나의지출</a></li>
+						<li><a href="#">이체</a></li>
+						<li><a href="#">신규/해지</a></li>
+						<li><a href="#">공과금/법원</a></li>
+					</ul></li>
+			</ul>
+			<ul>
+				<li><a href="#">예금/신탁</a></li>
+			</ul>
+			<ul>
+				<li><a href="#">대출</a></li>
+			</ul>
+			<ul>
+				<li><a href="#">펀드</a></li>
+			</ul>
+			<ul>
+				<li><a href="#">외환</a></li>
+			</ul>
+			<hr>
+			<a href="#">링크1</a>
+			<ul>
+				<li>메뉴1
+					<ul>
+						<li>메뉴2
+							<ul>
+								<li>메뉴속3 여기서부턴 모양 같음.
+									<ul>
+										<li>4</li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+
+					</ul>
+				</li>
+			</ul>
+			<hr>
+			<ol>
+				<li><a href="#">네이버 <img alt="" src="" title="">
+				</a></li>
+				<li>코로나현황</li>
+				<li>아픈것</li>
+				<!-- ul은 공지사항 등 비순서 목록. ol은 순위, 리서치 등 순서 목록 -->
+			</ol>
+				&larr;p는 블록<br> &copy; all right<br> <b>&lt;b&gt;태그는
+					글자를 두껍게 표시해줍니다.</b><br> you &amp; me <br> 안녕
+				&nbsp;&nbsp;&nbsp;
+				<!-- entitycode.com -->
+				<del>인라인</del>
+				밥소리 주걱소리. ㅍ개소리
+				<ins>나도 인라인</ins>
+				<br>
+			<blockquote>블롯콧 인용문 이라네요 들여쓰기 됨. css있으면 안써도됨.</blockquote>
+			<abbr title=" 이또한 화면 낭독기 음성으로 전환됨. 낄때 끼고 빠질때 빠져라">축약어</abbr> <br>
+			멍청이소리 밥소리 주걱소리. 개소리 멍청이소리 밥소리 주걱소리.
+			<a href="http://www.naver.com">네이버</a>
+			<!-- alt속성은 이미지의 대체 택스트로써 시각 장애인들에게 화면 낭독기를 통해 음성으로 변환되어 표시된다. -->
+			<img alt="여자이미지" src="" title="여자"> <br>
+			<h2>윗첨자와 아랫첨자</h2>
+			m<sub>_2 log</sub> <br> co<sup>^2 제곱</sup>
+
+			<hr>
+			<!-- 개발시 단락단위로 주제를 바꾸려고 할 때 주로 사용하는 수평선 태그. -> 나중에 다 지움 -->
+			<a href="#">임시태그</a>
+
+			<p>
+				<em>em은 인라인 요소로써 음성강조 및 이탤릭 적용한다. 비슷한건 i</em>
+			</p>
+		</section>
+	</main>
+</body>
+</html>

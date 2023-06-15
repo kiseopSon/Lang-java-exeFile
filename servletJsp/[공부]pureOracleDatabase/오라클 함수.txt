@@ -1,0 +1,74 @@
+날짜 함수
+- 오라클은 날짜형식을 [세기,년,월,시,분,초] 형식으로 7BYTE내에서 기억.
+- 현재날짜를 기억하는 키워드는 SYSDATE다.
+
+1) MONTH_BETWEEN : 두 날짜 사이의 개월수를 구한다
+select sysdate, hire_date, months_between(sysdate, hire_date) m from employees;
+예) 입사기간이 160개월 이상인 사람들의 이름, 입사일, 입사후 오늘까지의 개월 수를 조회하시오. 단, 입사후 개월수는 trunc를 사용하여 소수점 이하를 잘라내자.
+
+2)ADD_MONTHS : 특정 날짜에 월을 더한다(몇개월 후의 날짜를 알고자 할 떄)
+예) 현자 날짜로 부터 2개월 후
+select sysdate, add_months(sysdate, 2)m from dual;
+
+문제1 사번이 120번인 사원이 입사후 3년 6개월째 되는 날 파티를 하려고 한다. 해당 사원의 이름, 입사일, 파티날짜를 출력!
+select first_name, hire_date, add_months(hire_date,42)m from employees where employee_id = 120;
+
+3) NEXT_DAY : 특정 날짜에서 다가오는 가장 빠른 요일을 구한다.(일요일: 1, 월요일: 2...)
+select next_day(sysdate, 4) n_day from dual;
+
+문제2 사번이 120번인 사원이 입사일로부터 처음으로 맞이하는 금요일이 몇월 몇일인지 사번, 이름, 입사일, 첫맞이 금요일 순으로 출력
+select employee_id, first_name, hire_date,next_day(hire_date,6) from employees where employee_id = 120;
+
+4)TO_CHAR() : 형식에 맞는 문자열로 포메팅하여 출력하는 함수
+select to_char(sysdate, 'yyyy/mm/dd') from dual;
+
+문제3 모든 사원의 이름과 입사년도를 '07-06-13 tuesday' 출력
+select first_name,to_char(hire_date,'mm-dd-yy day')hire_date from employees;
+
+--숫자 -> 문자
+select salary*12, to_char(salary*12,'999,999.99')from employees;
+
+--숫자형태의 문자 -> 숫자
+select '123', to_number('123')+1 from employees;
+
+--날짜형태의 문자 -> 날짜
+select to_char(to_date('04082020'),'yyyy-mm-dd')from dual;
+select to_char(to_date('04992020'),'yyyy-mm-dd')from dual; (x)(ex. 실제 날짜 형식의 데이터만 변경 가능.)
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+6. 그룹화
+문제1) 사원테이블에서 직종이 'IT_PROG'인 사원들의 급여의 평균, 급여의 합을 구하시오.
+select avg(salary),sum(salary) from employees where job_id = 'IT_PROG';
+예) 각 부서별 급여의 평균과 총합을 구하자!
+SELECT DEPARTMENT_ID,COUNT(*), AVG(SALARY), SUM(SALARY) FROM EMPLOYEES  GROUP BY DEPARTMENT_ID;
+예)부서와, 직종별로 그룹화 하여 결과를 부서번호, 직종, 인원수 순으로 출력
+SELECT DEPARTMENT_ID, JOB_ID, COUNT(*) FROM EMPLOYEES GROUP BY DEPARTMENT_ID, JOB_ID;
+
+문제2) 각 직종별 급여의 총 합 출력
+SELECT JOB_ID, SUM(SALARY) FROM EMPLOYEES GROUP BY JOB_ID;
+
+문제3) 부서번호, 직종별 급여의 합을 출력하되 부서번호가 낮은순으로 정렬하시오.
+SELECT DEPARTMENT_ID, JOB_ID, SUM(SALARY) FROM EMPLOYEES GROUP BY DEPARTMENT_ID, JOB_ID ORDER BY DEPARTMENT_ID;
+
+문제4) 부서별로 그룹화하여 각 부서의 급여합계와 사원수, 부서별 평균 급여를 출력. 단, 급여는 많이 받는 사람부터 정렬하여 출력.
+SELECT DEPARTMENT_ID,COUNT(*),SUM(SALARY), AVG(SALARY) FROM EMPLOYEES GROUP BY DEPARTMENT_ID ORDER BY SUM(SALARY) DESC;
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+6-1. 그룹화 내에서의 조건부여
+--조건식에서 그룹함수를 써야 한다면 HAVING절에 넣어야 한다.
+
+예) 부서별로 그룹화 하여, 각 부서별 급여의 최대값, 최소값, 인원수를 출력. 단, 급여의 최대값이 8000이상인 결과만 보여주자! 
+select department_id, max(salary), min(salary), count(*) from employees group by department_id having max(salary) >= 8000;
+
+문제5) 부서별로 그룹화 하여 각 부서별 인원수가 20명 이상인 부서의 정보를 부서번호, 급여의 합, 급여의 평균, 인원수 순으로 출력. 단, 급여의 평균은 소수점 2자리에서 반올림.
+select department_id, sum(salary), round(avg(salary),2), count(*) from employees group by department_id having count(*) >= 20;
+
+문제6) 부서별, 직종별 그룹화. 결과를 부서번호, 직종, 인원수로 출력하는데, 직종이 '...man'으로 끝나는 직종만 출력.
+select department_id, job_id, count(*) from employees where job_id like '%MAN' group by department_id, job_id;
+
+7. DECODE 함수
+--자바의 IF문과 비슷하다
+
+-- DECODE(참조값, 조건식, 참값, 거짓값)
+--DECODE(참조값, 조건식1, 조건1의 참값, 조건식2, 조건2의 참값, 거짓값);
+
+예) 각 부서별 인원수가 45명이면 '인원조정', 34명이면 '검토중', 6명이면 '적정인원' 그외는 '대기'라고 출력하자!
+select department_id, count(*), decode(count(*), 45, '인원조정', 34, '검토중', 6, '적정인원', '대기') from employees group by department_id;

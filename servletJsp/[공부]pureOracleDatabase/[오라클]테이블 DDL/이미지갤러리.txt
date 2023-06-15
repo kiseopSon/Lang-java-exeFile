@@ -1,0 +1,14 @@
+--이미지갤러리
+
+--시퀀스
+create sequence seq_photo_idx;
+
+--테이블
+create table photo(
+	idx number(3) primary key,
+	title varchar2(100), --게시글제목
+	filename varchar2(100), --업로드용 파일명
+	pwd varchar2(100),
+	ip varchar2(100),
+	regidate date --등록일자
+);

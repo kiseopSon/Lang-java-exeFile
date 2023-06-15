@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>fixed연습</title>
+		<link rel="stylesheet" href="../css/reset.css">
+		<style>
+			/*해당 위치 보정!*/
+			#header{width: 200px; left: 50px; top: 30px; border: 1px solid; position: fixed;}
+			
+			p{width: 200px; font: 18px "굴림", sans-serif; color: gray;}
+			
+			img{display: block;}
+			
+			a{display: block;
+			  background: #123456;
+			  margin: 2px 0;
+			  padding: 5px;
+			  color: #fff;}
+			
+			#content{width: 300px; height: 1500px;
+					 margin-left: 270px;
+					 background: #999;
+					 color: #fff;}
+		</style>
+	</head>
+	<body>
+		<div id="header">
+			<p><img alt="" src="../image/pluscard.jpg" width="70px">fixed메뉴</p>
+			
+			<ul>
+				<li><a href="#">회사소개</a></li>
+				<li><a href="#">사이트맵</a></li>
+				<li><a href="#">오시는길</a></li>
+				<li><a href="#">커뮤니티</a></li>
+			</ul>
+		</div>
+		
+		<div id="content">
+			<p>홈페이지의 주된 내용들</p>
+		</div>
+		<div id="footer">
+			<address>copyright all right reserved. 저작권정보.</address>
+		</div>
+	</body>
+</html>

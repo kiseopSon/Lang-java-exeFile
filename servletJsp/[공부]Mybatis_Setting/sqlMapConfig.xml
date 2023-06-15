@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<environments default="">
+		<environment id="">
+			<transactionManager type="JDBC" />
+			<dataSource type="JNDI"><!--lookUp기능으로 프로젝트내에 상대경로를 통해 디렉토리에서 서칭-->
+				<property name="data_source" 
+				value="java:comp/env/jdbc/oracle_test" /><!--해당 태그를 통해서 database정보 읽어옴.-->
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<mapper resource="config/mybatis/mapper/dept.xml" />
+	</mappers>
+</configuration>

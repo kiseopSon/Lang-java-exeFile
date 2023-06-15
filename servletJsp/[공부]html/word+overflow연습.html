@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>word 연습</title>
+<style>
+	p{width: 150px; padding: 5px;
+	  margin-bottom: 10px;
+	  height:90px;
+	  border: 1px solid red;}
+	  /* 영문을 띄어쓰기 없이 길게 입력하면 폭값을 무시하고 영역 밖으로 삐져나오는데,
+	  이것을 가로폭에 강제로 맞춰 라인을 변경하능 기능이 word-wrap.*/
+	.ww{ word-wrap: break-word;}
+	.hidden{overflow: hidden;}
+	.scroll{overflow: scroll;}
+	.auto{overflow: auto;}
+	.visible{overflow: visible;}
+</style>
+</head>
+<body>
+	<p class="hidden">
+		이문장에는 매우 긴 영어단어가 포함되어 있습니다.
+		영단어가 깁니다. 주의하세요
+		asdfk;a;efnaefi;awef;oawnf;oijc;oiajw;jn;iewrjaer
+	</p>
+	<p class="scroll">
+		이문장에는 매우
+	</p>
+	<p class="auto">
+		이문장에는 매우 긴 영어단어가 포함되어 있습니다.
+		영단어가 깁니다. 주의하세요
+		asdfk;a;efnaefi;awef;oawnf;oijc;oiajw;jn;iewrjaer
+	</p>
+	<p class="visible">
+		이문장에는 매우 긴 영어단어가 포함되어 있습니다.
+		영단어가 깁니다. 주의하세요
+		asdfk;a;efnaefi;awef;oawnf;oijc;oiajw;jn;iewrjaer
+	</p>
+	<p class="ww">
+		이문장에는 매우 긴 영어단어가 포함되어 있습니다.
+		영단어가 깁니다. 주의하세요
+		asdfk;a;efnaefi;awef;oawnf;oijc;oiajw;jn;iewrjaer
+	</p>
+</body>
+</html>

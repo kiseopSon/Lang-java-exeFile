@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<!-- Ajax(Asynchronus Javascript & XML) 
+	 : 자바스크립트를 이용한 백그라운드 통신기술( 하나의 웹페이지 안에서 변경사항이 발생하면
+	   페이지 전체를 새로고침 하는 것이 아닌, 특정 일부분에 대해서만 갱신이 가능하도록 하는 기술 )-->
+	   
+	<script type="text/javascript" src="./httpRequest.js"></script>
+
+	<script type="text/javascript">
+		function send() {
+			var dan = document.getElementById("dan").value;
+			
+			if( dan < 2 || dan > 9 ){
+				alert("2 ~ 9사이의 값만 입력");
+				return;
+			}
+			
+			
+			//Ajax로 요청하기 위한 설정
+			 var url = "gugudan_ajax.jsp";
+			var param = "dan=" + dan;
+			sendRequest(url, param, resultFn, "GET");
+		}
+		
+		//Ajax작업을 마친 결과를 받을 콜백메서드
+		function resultFn(){
+			//alert( xhr.readyState + "/" + xhr.status );
+			//xhr.readyState
+			//0 : ( 초기화 오류 )
+			//1, 2, 3( 페이지 로딩중 )
+			//4 : 로드완료
+			
+			//xhr.status
+			//200 : 이상없음
+			//404 : 페이지 없음
+			//500 : 데이터 오류
+			if( xhr.readyState == 4 && xhr.status == 200 ){
+				//도착한 데이터 읽기
+				var data = xhr.responseText;
+				
+				document.getElementById("disp").innerHTML = data;
+			}
+		}
+	</script>
+</head>
+<body>
+	단 : <input id="dan">
+		<input type="button" value="확인" onclick="send();">
+		<hr>
+		<div id="disp"></div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

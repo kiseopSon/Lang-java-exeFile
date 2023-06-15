@@ -1,0 +1,12 @@
+--회원테이블2
+create table myshop(
+	idx number(3) primary key,
+	name varchar2(50) not null,
+	id varchar2(100) not null unique,
+	pwd varchar2(100) not null,
+	email varchar2(100),
+	addr varchar2(200)
+);
+
+--시퀀스
+create sequence seq_myshop_idx;

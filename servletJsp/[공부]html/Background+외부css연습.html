@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>백그라운드</title>
+<style>
+/*repeat : 바둑판식이 기본. no-repeat : 한장만. repeat-x(y) : x(y)좌표에출력*/
+p {
+	border: 1px solid black;
+	padding: 50px;
+	width: 500px;
+	height: 150px;
+}
+
+.back {
+	background: red url("image/pluscard.JPG") no-repeat 20px 100px;
+}
+
+.back2 {
+	background: red url("image/pluscard.JPG") no-repeat right bottom;
+}
+
+.back3 {
+	background: red url("image/pluscard.JPG") no-repeat center;
+}
+
+.back4 {
+	background: red url("image/pluscard.JPG") repeat 70% 10%;
+}
+</style>
+<link rel="stylesheet" href="../css\reset.css">
+</head>
+<body>
+	<p class="back">
+		이별 후 그 시간은 지겹도록 더디고<br> 이별 후 그 마음은 이렇게 아프고<br> 겪을만큼 겪었는데도
+		처음보다 아프다<br> 이별후의 시간은 지겹도록 더디다
+	</p>
+	<p class="back2">
+		이별 후 그 시간은 지겹도록 더디고<br> 이별 후 그 마음은 이렇게 아프고<br> 겪을만큼 겪었는데도
+		처음보다 아프다<br> 이별후의 시간은 지겹도록 더디다
+	</p>
+	<p class="back3">
+		이별 후 그 시간은 지겹도록 더디고<br> 이별 후 그 마음은 이렇게 아프고<br> 겪을만큼 겪었는데도
+		처음보다 아프다<br> 이별후의 시간은 지겹도록 더디다
+	</p>
+	<p class="back4">
+		이별 후 그 시간은 지겹도록 더디고<br> 이별 후 그 마음은 이렇게 아프고<br> 겪을만큼 겪었는데도
+		처음보다 아프다<br> 이별후의 시간은 지겹도록 더디다
+	</p>
+	<ul>
+		<li><a href="#">안녕</a></li>
+		<li><a href="#">하세요</a></li>
+	</ul>
+</body>
+</html>

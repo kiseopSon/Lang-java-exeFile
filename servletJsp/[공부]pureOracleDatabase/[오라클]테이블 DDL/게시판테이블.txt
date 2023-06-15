@@ -1,0 +1,86 @@
+--시퀀스
+create sequence seq_board_idx;
+
+--게시판 DB
+create table board(
+	idx number(3) primary key, --게시글 일련번호
+	name varchar2(100) not null, --작성자
+	subject varchar2(250) not null, --게시글 제목
+	content clob not null, --내용
+	pwd varchar2(100) not null,
+	ip varchar2(100), --ip
+	regdate date, --작성일
+	readhit number(4) default 0, --조회수(기본값 0)
+	ref number(3), --기준글 번호(댓글을 달기위한 메인글의 idx == 여기서부터 대댓글 제작)
+	step number(3), --댓글의 순서
+	depth number(3) --댓글의 깊이
+);
+
+--db에 댓글 삭제 여부를 알 수 있도록 하는 컬럼 추가
+alter table board add(del_info number(2));
+
+--페이징 처리를 위한 쿼리문 : no를 뺸 나머지를 별칭으로 두고,
+-- ref가 가장 높은 순 탑10을 만들어 ref는 내림 step오름으로 검색해줘.
+-- where 절을 동적으로 바꾸면 페이징이 된다.
+select * from (select rank() over( order by ref desc, step) no, b.* from(select * from board) b)
+where no between 1 and 10;
+
+--샘플데이터
+insert into board values(
+	seq_board_idx.nextVal,
+	'이름 : 일길동',
+	'제목 : 내가 1빠',
+	'내용 : 나는 1등이 아니면 안해',
+	'1111',
+	'192.1.1.1',
+	sysdate,
+	0,
+	seq_board_idx.currVal, --현재시퀀스 값
+	0,
+	0
+);
+
+--샘플데이터2
+insert into board values(
+	seq_board_idx.nextVal,
+	'이름 : 이길동',
+	'제목 : 첫번째 댓글',
+	'내용 : 나는 1등이 아니면 안해의 댓글',
+	'1111',
+	'192.1.1.1',
+	sysdate,
+	0,
+	1, --메인글의 인덱스
+	1,
+	1
+);
+
+--샘플데이터3
+insert into board values(
+	seq_board_idx.nextVal,
+	'이름 : 삼길동',
+	'제목 : 댓글의 댓글',
+	'내용 : 나는 대댓글',
+	'1111',
+	'192.1.1.1',
+	sysdate,
+	0,
+	1, --메인글의 인덱스
+	2,
+	2
+);
+
+commit;
+
+select * from board order by ref desc, step;
+
+새글
+새로운 댓글이 올라오면 스탭이 꼬이는데 안꼬이게만드는게 중요!
+그래서 대대댓글작성전에 미리 step를 미리 바꿔서 들어오게 하는게 기본로직.
+idx ref step depth
+1     1   0      0
+안녕하세요 (idx : 1) 
+    L 아싸1빠(ref : 1, step : 1, depth : 1)
+	L 난 2빠 (ref : 1, step : 2, depth : 2)
+	L 3빠네 ㅠ (ref : 1, step : 3, depth : 2)
+    L 뭔소리?내가 2빠임(ref : 1, step : 4, depth : 1)

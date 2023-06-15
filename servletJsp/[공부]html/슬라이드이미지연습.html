@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>슬라이드 이미지</title>
+<style>
+a {
+	text-decoration: none;
+}
+</style>
+<script type="text/javascript">
+	
+	function nextGallery() {
+		//갤러리라는 아이디를 가진 태그를 검색하여 속성을 변경할 수 있다.
+		var res = document.getElementById("gallery");
+		
+		//"image/pluscard.jpg"; , image/bj.jpg
+		res.src = "image/bg.JPG";
+		
+	}
+	
+	function prevGallery() {
+		var res = document.getElementById("gallery")
+		res.src = "image/pluscard.jpg";
+	}
+</script>
+</head>
+<body>
+	<div>
+		<p>
+			<a href="#" onclick="prevGallery();"> 
+				<img src="image/pluscard.jpg" width="50px" alt="이전">
+			</a> 
+			
+			<img src="image/pluscard.jpg" id="gallery" width="200px" alt="갤러리"> 
+			
+			<a href="#" onclick="nextGallery()"> 
+				<img src="image/pluscard.jpg" width="50px" alt="다음">
+			</a>
+		</p>
+	</div>
+</body>
+</html>

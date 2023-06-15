@@ -1,0 +1,19 @@
+create table SUNGTB(
+	no number(3) primary key,
+	name varchar2(50) not null,
+	kor number(3) default 0,
+	eng number(3) default 0,
+	mat number(3) default 0
+);
+
+--시퀀스 생성
+create sequence seq_sungtb_no;
+
+--성적 테이블에 임시데이터 추가
+insert into sungtb values (seq_sungtb_no.nextVal, '일길동',90,80,70);
+insert into sungtb values (seq_sungtb_no.nextVal, '한길동',70,20,60);
+insert into sungtb values (seq_sungtb_no.nextVal, '중길동',80,90,50);
+
+--총점과 평균을 확인 가능한 조회 view 생성
+create or replace view sungtb_view as select s.*, (kor+eng+mat) tot, round((kor+eng+mat)/3,1) avg, rank() over(order by (kor + eng+mat) desc) rank
+from (select * from sungtb) s order by no;

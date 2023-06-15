@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>border를 사용한 폼 지정하기 + 인라인 블록</title>
+<style>
+	p{border-width: 10px 0 10px 0;
+	  width: 600px;
+	  border-style: solid;
+	  border-color: red;
+	  padding: 10px;
+	  text-indent: 15px;
+	  text-align: center; /*+justify - 양쪽정렬*/
+	  line-height: 1.4;/*이걸 많이 씀. = 기본줄 간격 : 16px * 1.4값*/
+	}
+	.m1{list-style: none;}
+	.m2{list-style: disc;}
+	.m3{list-style: circle;}
+	.m4{list-style: square;}
+	.m5{list-style: upper-alpha;}
+	.m6{list-style: lower-alpha;}
+	.m7{list-style: upper-roman;}
+	.m8{list-style: lower-roman;}
+	.m9{list-style: url("image/pluscard.JPG");}
+	li{list-style: none;}
+	span{display: block;}
+</style>
+</head>
+<body>
+	<p> 
+		흔들리는 꽃들 속에서 네 샴푸향이 느껴진거야 스쳐지나간건가?<br> 
+		뒤돌아보지만 그냥 사람들만 보이는거야<br>
+		다와가는 집근처에서 괜히 핸드폰만 만지는거야 한번 연락해 볼까? 용기내 보지만 그냥 내 마음만 아쉬운 거야<br>
+		걷다가 보면 항상 이렇게 너를 바라만 보던 너를 기다린다고 말할까?<br>
+		지금 집앞에 계속 이렇게 너를 아쉬워 하다 너를 연락했다 할까?
+	</p>
+	<ul>
+		<li class="m1">뉴스</li>
+		<li class="m2">메뉴</li>
+		<li class="m3">메뉴2</li>
+		<li class="m4">메뉴3</li>
+		<li class="m5">메뉴4</li>
+		<li class="m6">책</li>
+		<li class="m7">도서관</li>
+		<li class="m8">메뉴5</li>
+		<li class="m9">메뉴6</li>
+		<li>
+			<img src="image/pluscard.JPG" alt="초파">
+			<span>이미지 입니다.</span>
+			<span>내용</span>
+		</li>
+	</ul>
+</body>
+</html>

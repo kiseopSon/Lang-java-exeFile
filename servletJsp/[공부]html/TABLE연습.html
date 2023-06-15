@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>테이블 과 css를 통한 dl디자인</title>
+<style>
+	*{margin: 0; padding: 0;}
+	dl{width: 650px; border: 5px double gray; margin: 0 auto;}/*중앙 정렬 = margin: 0 auto; = 이걸 주로 씀.*/
+	dt{padding: 15px 0; text-align: center; background: #aaf;
+	   border-bottom: 10px solid blue; letter-spacing: 10px;}
+	dd{padding: 10px 0; text-indent: 15px;}
+	.line{border-bottom: 3px dotted black;}
+	
+	li{ padding-left: 10px; height: 30px;}
+	
+</style>
+</head>
+<body>
+	<!-- 열 합치기 -->
+	<table border="1">
+		<caption>행열 합치기</caption>
+		<thead>
+			<!-- 시멘틱 태그  thead, tbody, tfoot-->
+			<tr>
+				<td colspan="3">공연요금</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>구분</td>
+				<td>s석</td>
+				<td>vip</td>
+			</tr>
+			<tr>
+				<td>성인</td>
+				<td>40,000원</td>
+				<td>60,000원</td>
+			</tr>
+			<tr>
+				<td>청소년</td>
+				<td>30,000원</td>
+				<td>50,000원</td>
+			</tr>
+			<tr>
+				<td>소인</td>
+				<td colspan="3">미취학 아동 일반 요금의 50%</td>
+			</tr>
+			<tr>
+				<td rowspan="2">공연시간</td>
+				<td>1회</td>
+				<td>13:00시 ~ 15:00시</td>
+			</tr>
+			<tr>
+				<td>2회</td>
+				<td>17:00시 ~ 19:00시</td>
+			</tr>
+		</tbody>
+	</table>
+	<dl>
+		<dt>한국 속담</dt>
+		<dd class="line">까마귀 날자 배 떨어진다.</dd>
+		<dd>소 잃고 외양간 고친다.</dd>
+	</dl>
+</body>
+</html>

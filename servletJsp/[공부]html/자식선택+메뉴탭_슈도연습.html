@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자식선택+메뉴탭</title>
+<style>
+	/*자식선택자 : 직계자식에게만 속성을 부여*/
+	#header > h1{color: red;}
+	li{list-style: none;
+	   display: inline;
+	   margin-left: 10px;}
+	ul{width: 302px;}
+	 li a{text-decoration: overline;/*a 태그 밑줄 윗줄 아랫줄 등등 제거*/
+	 	  background: #f30;
+	 	  text-align: center;
+	 	  margin: 4px 0;
+	 	  color: #fff;
+	 	  font-weight: bold;}
+	 li a:nth-child(odd) {color: green;}
+</style>
+</head>
+<body>
+	<div id="header">
+		<h1>헤더의 직계자식</h1>
+		<div id="nav">
+			<h1>nav의 자식</h1>
+		</div>
+		<div id="nav1">
+			<h1>nav1의 자식</h1>
+		</div>
+	</div>
+	
+	<div id="box">
+		<h1>주 메뉴</h1>
+		<ul>
+			<li><a href="#">Company</a></li>
+			<li><a href="#">Product</a></li>
+			<li><a href="#">Service</a></li>
+			<li><a href="#">Coment</a></li>
+		</ul>
+	</div>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="b"><!-- spring에선 필수. 중복방지용. this.form할일 줌. 알아서 검색해줌 목적에 따라 여러개 만들어둬야함-->
+	<select id="board_list" resultType="board">
+		select * from board order by ref desc, step
+	</select>
+	
+	<!-- 새글 쓰기 -->
+	<insert id="board_insert" parameterType="board">
+		insert into board values(
+			seq_board_idx.nextVal,
+			#{name},
+			#{subject},
+			#{content},
+			#{pwd},
+			#{ip},
+			sysdate,
+			0,
+			seq_board_idx.currVal,
+			0,
+			0,
+			0
+		)
+	</insert>
+	
+	<!-- 상세보기 -->
+	<select id="board_one" parameterType="int" resultType="board">
+		select * from board where idx=#{idx}
+	</select>
+	
+	
+	<!-- 조회수 증가 -->
+	<update id="board_update_readhit" parameterType="int">
+		update board set readhit = readhit + 1 where idx=#{idx} 
+	</update>
+	
+	<!-- step값 1씩 증가 본인 댓글 녀석들만-->
+	<update id="board_update_step" parameterType="board">
+		update board set step = step + 1 where ref=#{ref} and step > #{step}<!-- 단 내밑에애들들 말야 -->
+	</update>
+	
+	<!-- 댓글달기 대댓글도 똑같음. -->
+	<insert id="board_reply" parameterType="board">
+		insert into board values(
+			seq_board_idx.nextVal,
+			#{name},
+			#{subject},
+			#{content},
+			#{pwd},
+			#{ip},
+			sysdate,
+			0,
+			#{ref},
+			#{step},
+			#{depth},
+			0
+		)
+	</insert>
+	
+	<!-- 삭제하고자 하는 게시글 검색 -->
+	<select id="board_idx_pwd" parameterType="java.util.HashMap" resultType="board">
+		select * from board where idx=#{idx} and pwd=#{pwd}
+	</select>
+	
+	<!-- 게시글 삭제 (된것 처럼 업데이트) -->
+	<update id="board_del_update" parameterType="board">
+		update board set subject=#{subject}, name=#{name}, del_info = -1
+		where idx=#{idx}
+	</update>
+	
+	<!-- 페이지에 따른 게시물 조회. 위에껀 삭제해도 됨.-->
+	<select id="board_list_condition" parameterType="java.util.Map" resultType="board">
+		select * from (select rank() over( order by ref desc, step) no, b.* from(select * from board) b)
+		where no between #{start} and #{end}
+	</select>
+	
+	<!-- 전체 게시물 수 조회 -->
+	<select id="board_count" resultType="int">
+		select count(*) from board
+	</select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+

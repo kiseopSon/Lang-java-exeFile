@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>구구단 연습</title>
+<script type="text/javascript">
+	//59 ~ 90 : 프롬프트 받고 성적에 따라 점수 : 성적
+	
+	//for (var a = 2; a <= 9; a++) {
+		//document.write('<h1>',a,"단",'</h1>','<br>');
+		//for (var i = 1; i <= 9; i++) {
+			//document.write('<h5 >',a,"x",i,"=",a * i,'</h5>','<br>');
+		//}
+	//}
+	
+	function calc() {
+		var dan = document.getElementById("dan").value;
+		
+		//유효성 체크
+		if(dan.trim() == ""){
+			alert("빈칸입니다.");
+			return;//해당 메서드 종료.
+		}
+		//유효성 체크 2
+		if(dan < 2 || dan > 9){
+			alert("2 ~ 9사이의 값만 입력하세요.");
+			return;
+		}
+		
+		//문자열 타입으로 변환.
+		var str = "";
+		for (var i = 1; i <= 9; i++) {
+			str = str + dan + " * " + i + " = " + (dan * i) + "<br>";
+		}
+		//그냥쓰면 새로만듬.
+		//document.write(str); (x)
+		//그리하여 구구단을 추가할 div를 검색하여 안쪽에 str을 넣어줘야 한다.
+		var disp = document.getElementById("disp");//전역은 잘 안되는 경향이 있음.
+		//innerHTML : 특정태그의 내부에 값을 추가하기위한 코드.
+		disp.innerHTML = str;
+	}//calc
+	
+	var b_show = true;
+	function show() {
+		b_show = !b_show;//플래그
+		
+		document.getElementById("bt_show").value =
+			b_show ? "숨기기" : "보이기";
+		
+		document.getElementById("disp").style.display = b_show ? "block" : "none";
+	}//show
+	
+</script>
+<style>
+	#disp{width: 300px; height: 300px; background: black; color: white;}
+</style>
+</head>
+<body>
+	<p>
+		단:<input type="text" id="dan" value="">
+		<input type="button" value="계산시작" onclick="calc();">
+		<input type="button" value="숨기기" id="bt_show" onclick="show();">
+	</p>
+	
+	<hr>
+	
+	<div id="disp"></div>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>앱솔루트(절대좌표)연습</title>
+<link rel="stylesheet" href="../css/reset.css">
+<style>
+.box {
+	width: 250px;
+	border: 1px solid red;
+	position: relative;
+	left: 100px;
+	top: 50px;
+}
+
+p {
+	width: 130px;
+	height: 80px;
+	color: #fff;
+}
+
+.mred {
+	background: red;
+}
+
+.mblue {
+	background: blue;
+	position: absolute;
+	left: 50px;
+	top: 30px;
+}
+
+.mgreen {
+	background: green;
+}
+
+#header {
+	width: 1000px;
+	height: 80px;
+	margin: 10px auto;
+	border: 1px solid;
+	position: relative;
+}
+
+#header p.aa {
+	position: absolute;
+	left: 0;
+	top: 7px;
+}
+
+#header ul{
+	overflow: hidden;
+}
+
+#header li{
+	float: left;
+}
+
+#header p{position: absolute; right: 10px; top: 5px;}
+
+#header ul.a1{
+	position: absolute; left: 350px; top: 10px;
+}
+
+#header ul.a2{
+	position: absolute; left: 225px; top: 40px;
+}
+</style>
+</head>
+<body>
+	<div class="box">
+		<p class="mred">박스의 포지션 선정</p>
+		<p class="mblue">박스의 포지션 선정</p>
+		<p class="mgreen">박스의 포지션 선정</p>
+	</div>
+	<div id="header">
+		<p class="aa">
+			<img alt="웃는이미지" src="../image/pluscard.jpg" width="70" height="60">
+		</p>
+		<ul class="a1">
+			<li><img alt="메뉴" src="../image/pluscard.jpg" 
+				width="70"
+				height="50"></li>
+			<li><img alt="메뉴" src="../image/pluscard.jpg" 
+		 		width="70"
+				height="50"></li>
+			<li><img alt="메뉴" src="../image/pluscard.jpg" 
+				width="70"
+				height="50"></li>
+			<li><img alt="메뉴" src="../image/pluscard.jpg" 
+				width="70"
+				height="50"></li>
+			<li><img alt="메뉴" src="../image/pluscard.jpg" 
+				width="70"
+				height="50"></li>
+			<li><img alt="메뉴" src="../image/pluscard.jpg" 
+				width="70"
+				height="50"></li>
+		</ul>
+
+		<ul class="a2">
+			<li><img alt="메뉴" src="../image/pluscard.jpg" 
+				width="70"
+				height="50"></li>
+			<li><img alt="메뉴" src="../image/pluscard.jpg" 
+				width="70"
+				height="50"></li>
+			<li><img alt="메뉴" src="../image/pluscard.jpg" 
+				width="70"
+				height="50"></li>
+			<li><img alt="메뉴" src="../image/pluscard.jpg" 
+				width="70"
+				height="50"></li>
+			<li><img alt="메뉴" src="../image/pluscard.jpg" 
+				width="70"
+				height="50"></li>
+			<li><img alt="메뉴" src="../image/pluscard.jpg" 
+				width="70"
+				height="50"></li>
+		</ul>
+		<p>
+			<img alt="로고" src="../image/pluscard.jpg" width="70" height="50">
+		</p>
+	</div>
+</body>
+</html>

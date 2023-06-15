@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pro"><!-- spring에선 필수. 중복방지용. this.form할일 줌. 알아서 검색해줌 목적에 따라 여러개 만들어둬야함-->
+	<select id="product_list" resultType="Product" parameterType="java.lang.String">
+		select * from product where category=#{category}
+	</select>
+	
+	<insert id="product_insert" parameterType="Product"><!-- 정확한 vo의 명칭을 그대로 가져와야한다. == vo.getcategory()-->
+		insert into product values(seq_pro_idx.nextVal,
+									#{category},
+									#{p_num},
+									#{p_name},
+									#{p_company},
+									#{p_price},
+									#{p_saleprice},
+									#{p_image_s},
+									#{p_image_l},
+									#{p_content},
+									sysdate)
+	</insert>
+	
+	<!-- idx에 해당하는 상품정보 딱 ! 한 건 조회 리절트타입은 select일땐 언제나 같음. -->
+	<select id="product_one" parameterType="int" resultType="product">
+		select * from product where idx=#{idx}
+	</select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<link rel="stylesheet" href="../css/reset.css">
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+
+			li {
+				list-style: none;
+			}
+
+			a {
+				text-decoration: none;
+			}
+
+			body{width: 970px; margin: 0 auto;}
+			
+			#main{position: relative; height: 150px;}
+			
+			#main hgroup{position: absolute; left: 5px; top: 10px;}
+			
+			#a1 ul{overflow: hidden;}
+			
+			#main li{float: left;}
+			
+			#a1{position: absolute; right: 0; top: 3px;}
+			
+			#a1 ul li{border: 1px solid gray;}
+			
+			#a1 ul li:nth-child(1) {border-left: 2px solid;}
+			#a1 ul li:nth-child(5) {border-right: 2px solid;}
+			
+			#a1 ul li a{padding: 2px 10px; color: #666; display: block;}
+			
+			#a1 ul li a:hover{background: #999; color: #fff;}
+			
+			/*--------------------------a2---------------------------*/
+			
+			#a2 ul{overflow: hidden;}
+			
+			#a2{ position: absolute; right: 0; bottom: 0;}
+			
+			#a2 ul li{border: 1px solid gray;}
+			#a2 ul li:first-child {border-left: 2px solid;}
+			#a2 ul li:last-child {border-right: 2px solid;}
+			
+			
+			#a2 ul li a{padding: 10px 20px; color: #666; display: block;}
+			
+			#a2 ul li a:hover{background: #aaf; color: #fff;}
+		</style>
+	</head>
+	<body>
+		<header id="main">
+			<hgroup><!-- 제목과 부제목 묶는태그 -->
+				<h1>Web 개발자 모집</h1>
+				<h2>HTML5 + CSS</h2>
+			</hgroup>
+			<nav id="a1">
+				<ul>
+					<li><a href="#">Web</a></li>
+					<li><a href="#">Mobile</a></li>
+					<li><a href="#">Game</a></li>
+					<li><a href="#">Simulation</a></li>
+					<li><a href="#">Data</a></li>
+				</ul>
+			</nav>
+			
+			<nav id="a2">
+				<ul>
+					<li><a href="#">Web</a></li>
+					<li><a href="#">Mobile</a></li>
+					<li><a href="#">Game</a></li>
+					<li><a href="#">Simulation</a></li>
+					<li><a href="#">Data</a></li>
+				</ul>
+			</nav>
+		</header>
+	</body>
+</html>

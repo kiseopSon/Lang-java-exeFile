@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dept"><!-- spring에선 필수. 중복방지용. this.form할일 줌. 알아서 검색해줌 목적에 따라 여러개 만들어둬야함-->
+		<!-- parameterType이 Map, List등의 컬렉션이 아닌, 단일 자료형일때는 deptno=#{abc}처럼 아무 이름이나 받아도 된다.(막 안받는게 더 좋다) -->
+	<!-- resultmap을 통해 한번의 select로 여러번의 select를 수행한 것과 같은 효과를 얻을 수 있다. db접근을 최소화. = 엄청 자주 쓰이진 않음. 여러워서? -->
+	<resultMap type="vo.DeptVO" id="deptResult"><!-- id와 밑에 resultMap의 이름이 같아야한다 꼭. -->
+		<result property="deptno" column="deptno"/><!-- column에 있는걸 property에 넣음. -->
+		<result property="dname" column="name"/>
+		<result property="location" column="location"/>
+		
+		<!-- 자바의 컬렉션 객체를 의미한다 (set, map, list) -->
+		<collection property="sa_list" column="{a= deptno}" select="sawon_list_deptno"/><!--column : 매개변수 = 객체명 -->
+	</resultMap>
+	
+	
+	<!-- dept테이블에서 부서번호, 부서명, 위치를 검색 -->
+	<select id="dept_list" resultMap="deptResult">
+		select deptno, dname, location from dept
+	</select>
+	
+	<!-- 특정 부서번호에 해당하는 사원들의 사번, 이름을 검색 -->
+	<select id="sawon_list_deptno" resultType="vo.SawonVO"><!-- 클래스는 이렇게 쓰는게 훨씬안전 -->
+		select sabun, saname from sawon where deptno=#{a}<!-- collection column a 매개변수내용 여기서 받음. -->
+		<!-- ;붙이면 오히려 오류남.파라미터= 조건 은 한가지밖에 못하고 여기에 적으면 안됨. 기본설정이 mybatis설정시 마지막에 ;(세미콜론)을 마지막에 붙여주게 되어있음. -->
+	</select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,17 @@
+--회원관리 테이블
+
+--시퀀스
+create sequence seq_member_idx;
+
+--회원테이블 생성
+create table member(
+	idx number(3) primary key,
+	name varchar2(50) not null,
+	id varchar2(100) not null unique, --중복방지
+	pwd varchar2(100) not null,
+	email varchar2(100),
+	addr varchar2(200) --주소
+);
+
+--샘플 데이터
+insert into member values(seq_member_idx.nextVal, '오로치','sql','1234','sql@naver.com','서울 특별시 관악구');

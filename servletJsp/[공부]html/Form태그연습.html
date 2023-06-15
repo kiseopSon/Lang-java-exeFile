@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<!-- form사용방법 3가지 1.get 2.post 3.this.form - action으로 다음행동을 정한다, #nav에 > 지역처리용으로 쓰는법, 배열로 태그 만드는법 + window.onload.  -->
+		<meta charset="UTF-8">
+		<title>제일중요한 폼 연습을 통해 서버로 값을 전달하는 3가지 방법</title>
+		<style>
+			li{list-style: none;}
+			#nav{width: 1000px; height: 45px; padding: 6px 7px; background: #666; margin: 0 auto;}
+			#nav > li{float: left; position: relative; margin: 3px 47px;}
+			#nav li a{display: block; font-weight: bold; padding: 10px 20px; color: #e7e5e5;}
+			#nav li a:hover{background: #fff; color: #444;}
+			#nav ul{position: absolute; left: 0; top: 48px; width: 150px;
+					border: 1px solid #b4b4b4; display: none;}
+			#nav li:hover ul{display: block;}
+			#nav ul a:hover{color: #333;}
+			
+		</style>
+		<script>
+			var sido_array = ["서울","대전","대구","부산"];
+			//현재 html문서가 로드완료되었을 때 자동으로 호출되는 메서드. 딱1번.
+			window.onload = function(){
+				var gender = prompt("당신의 사는지역은?");//문자열로 출력함.
+				alert(gender);
+				var sido = document.getElementById("sido");
+				for (var i = 0; i < sido_array.length; i++) {
+					//<select>태그의 자식요소인 <option>태그를 만들어보자.
+					var option = document.createElement("option");
+					option.innerHTML = sido_array[i];
+					option.value = sido_array[i];
+					
+					//sido태그의 자식요소로 방금 생성해준 option태그를순서대로 추가해줌.
+					sido.appendChild(option);
+				}
+			}
+		
+			//방법1
+			function check1() {
+				//forms는 html내의 form태그들을 배열형식으로 관리/구별하기위한 속성.
+				var f = document.forms[0];
+				//form태그에서 id라는 name을 가진 태그를 찾아 값을 꺼내온다.
+				var id = f.id.value;
+				var pwd = f.pwd.value;
+				
+				if(id == ''){alert("아이디를 입력하세요."); f.id.focus(); return;}
+				if(pwd == ''){alert("비밀번호를 입력하세요."); f.pwd.focus(); return;}
+				
+			//전송방식 "GET" : 브라우저창에 파라미터를 노출. = 속도는 빠르지만 보안성이 떨어지고, 바이너리 값을 전달할 수 없다. = 일반적접속
+			//"POST" : 브라우저창에 노출X =한글도 전달안됨, 속도가 느리지만, 보안성이 높고, 바이너리값을 전달할 수 있다. = 계정관리.
+				f.method = "GET";
+				
+				//값을 전달할 페이지
+				f.action = "login.jsp";
+				
+				//form태그에 담겨진 모든 name속성을 action에 지정한 페이지로 전달함.
+				f.submit();//성공하면 200 못찾으면 404 db데이터다르면 500
+			}//check1
+			
+			//방법2
+			function check2() {
+				//ff라는 name을 가진 form태그를 가져온다.
+				var f = document.ff;
+				
+				var id = f.id.value;
+				var pwd = f.pwd.value;
+				
+				if(id == ''){alert("아이디를 입력하세요."); f.id.focus(); return;}
+				if(pwd == ''){alert("비밀번호를 입력하세요."); f.pwd.focus(); return;}
+				
+				f.submit();
+			}//check2
+			
+			//방법3
+			function check3(f) {
+				//따로 검색을 안해도됨 파라미터로 다 가져와서 가장많이 쓰는 형태.
+				var id = f.id.value;
+				var pwd = f.pwd.value;
+				
+				f.submit();
+			}//check3
+		</script>
+	</head>
+	<body>
+	
+		<ul id="nav">
+			<li><a href="#">처음으로</a></li>
+			<li>
+				<a href="#">여행안내</a>
+				<ul>
+					<li><a href="#">소개합니다</a></li>
+					<li><a href="#">오시는 길</a></li>
+				</ul>
+			</li>
+			<li>
+				<a href="#">이용방법</a>
+				<ul>
+					<li><a href="#">객실</a></li>
+					<li><a href="#">요금안내</a></li>
+					<li><a href="#">예약</a></li>
+					<li><a href="#">예약확인</a></li>
+				</ul>
+			</li>
+			<li>
+				<a href="#">게시판</a>
+				<ul>
+					<li><a href="#">공지사항</a></li>
+					<li><a href="#">FAQ</a></li>
+				</ul>
+			</li>
+			
+			<li><a href="#">프로필</a></li>
+			
+		</ul>
+	
+		<p>
+			지역 : <select id="sido"><!-- 초이스랑 똑같이 초기값 인지 못함. -->
+						<option value="0">:::지역을 선택하세요:::</option>
+				 </select>
+		</p>
+		
+		<!-- form태그 : 서버로 값을 전달하기 위해 사용하는 태그. 거의 90% input name(파라미터). -->
+		<!-- 방법 1 -->
+		<form>
+			<table border="1">
+				<tr>
+					<th>아이디</th>
+					<td><input name="id"></td>
+				</tr>
+				<tr>
+					<th>비밀번호</th>
+					<td><input type="password" name="pwd"></td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center">
+						<input type="button" value="방법1" onclick="check1()">
+					</td>
+				</tr>
+			</table>
+		</form>
+		<hr>
+		
+		<!-- 방법 2 -->
+		<form name="ff" method="POST" action="login.jsp" >
+			<table border="1">
+				<tr>
+					<th>아이디</th>
+					<td><input name="id"></td>
+				</tr>
+				<tr>
+					<th>비밀번호</th>
+					<td><input type="password" name="pwd"></td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center">
+						<input type="button" value="방법2" onclick="check2()">
+					</td>
+				</tr>
+			</table>
+		</form>
+		<hr>
+		
+		<!-- 방법 3 제일많이 씀 -->
+		<form method="GET" action="login.jsp" >
+			<table border="1">
+				<tr>
+					<th>아이디</th>
+					<td><input name="id"></td>
+				</tr>
+				<tr>
+					<th>비밀번호</th>
+					<td><input type="password" name="pwd"></td>
+				</tr>
+				<tr>
+					<th>나이</th>
+					<td><input name="age"></td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center">
+		<!-- 이것도 잘 안씀. 에러날 확률이 높아서. <input type="submit" value="전송"> -->
+						<input type="button" value="방법3" onclick="check3(this.form)">
+					</td>
+				</tr>
+			</table>
+		</form>
+	</body>
+</html>

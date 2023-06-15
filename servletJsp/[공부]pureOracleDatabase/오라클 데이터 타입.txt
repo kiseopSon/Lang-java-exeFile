@@ -1,0 +1,52 @@
+오라클 DB의 자료형
+1) NUMBER : 숫자형식의 데이터를 저장하기 위한 자료형
+2) DATE : 날짜와 시간데이터를 저장하기 위한 자료형
+3) CHAR : 문장데이터를 저장하기 위한 자료형
+4) VARCHAR : 문장 데이터를 저장하기 위한 자료형
+5) VARCHAR2 : 문장 데이터를 저장하기 위한 자료형 : 메모리낭비가 없음.
+
+--테이블 만들기
+CREATE TABLE FRIEND(
+	IDX NUMBER(2) PRIMARY KEY,
+	NAME VARCHAR2(20),
+	EMAIL VARCHAR2(50),
+	AGE NUMBER(2,3)
+);
+
+기본키(primary key) : 고유한 식별자로써 속성에 대한 중복을 방지하는 키
+후보키(candidate key) : name, age등 기본키가 될 자격이 있는 컬럼들
+외래키(foreign key) : 한 테이블의 속성이 다른 테이블의 기본키가 되는 것.
+
+예)각 부서가 위치하고 있는 도시명을 출력!!
+select * from departments;
+
+-------------------------------------------------------------------------------------------------------------------------
+JOIN : 테이블과 테이블을 연결하여 특정데이터를 얻고자 할 떄 사용하는 문법
+예) 각 부서가 위치하고 있는 도시명을 출력!!
+select d.department_id, d.department_name, l.city, d.location_id, l.location_id from departments d, locations l;
+
+예) 사원테이블에서 직종이 'IT_PROG'인 사원들의 정보를 사번, 이름, 직종, 급여, 부서명, 도시명 순으로 출력
+SELECT E.DEPARTMENT_ID, E.FIRST_NAME, E.JOB_ID, E.SALARY, D.DEPARTMENT_NAME, L.CITY FROM EMPLOYEES E, LOCATIONS L, DEPARTMENTS D WHERE E.DEPARTMENT_ID = D.DEPARTMENT_ID
+AND D.LOCATION_ID = L.LOCATION_ID AND E.JOB_ID = 'IT_PROG';
+
+문제1) 사원테이블과 부서(DEPARTMENTS)로 부터 FIRST_NAME, DEPARTMENT_ID, DEPARTMENT_NAME을 출력하되, 사원테이블과 부서테이블의
+DEPARTMENT_ID가 같은 경우에만 출력.
+select e.first_name, d.department_id, d.department_name from employees e, departments d where e.department_id = d.department_id;
+
+문제2) locations테이블과 countries테이블은 country_id라는 컬럼으로 관계를 맺고있다.
+locations테이블에서 도시명과 해당 도시가 위치하는 국가를 출력.
+select l.city, c.country_name from locations l, countries c where l.country_id = c.country_id;
+
+--------------------------------------------------------------------------------------------------------------------------
+--VIEW : 기존테이블에서 원하는 컬럼만 검색하기 위한 가상의 테이블.
+create or replace view : 수정됨
+create view : 수정안됨
+
+create or replace view emp_view(empno, hire, job) as select employee_id, hire_date, job_id from employees;
+create or replace view emp_view(empno,name) as select employee_id, first_name||last_name from employees; = 중복처리되서 수정됨.
+
+예)job_id가 'ST_CLERK'인 사원들의 데이터만 검색하는 VIEW를 만들자!!
+CREATE OR REPLACE VIEW st_view(empno,name,job) as select employee_id, first_name||last_name, job_id from employees where job_id = 'ST_CLERK';
+
+예)사원의 이름, 급여, 급여+10000의 값을 출력하는 view.
+create or replace view emp_view(name, salary, salary2)as select first_name||last_name, salary, salary+10000 from employees;
